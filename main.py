@@ -86,13 +86,21 @@ while True:
             print("Please enter a valid range (e.g., 10.0-20.0).")
     else:
         print("Please enter a valid range (e.g., 10.0-20.0).")
-# Write the data to a text file
+# Define a dictionary to map string values to numerical scores
+score_mapping = {
+    'critical': 10,
+    'important': 7,
+    'moderate': 4,
+    'low': 1
+}
+
+# Write the data to a text file with numerical scores
 with open(f"{filename}.txt", "w") as f:
-    f.write(f"BCA: {bca_answer}\n")
-    f.write(f"financial unit: {unit_answer}\n")
-    f.write(f"critical: {critical_risk_val}\n")
-    f.write(f"important: {low}-{high}\n")
-    f.write(f"moderate: {low}-{high}\n")
-    f.write(f"low: {low_risk_val}\n")
+    f.write(f"bca: {bca_answer}\n")
+    f.write(f"unit: {unit_answer}\n")
+    f.write(f"critical: {critical_risk_val} ({score_mapping['critical']})\n")
+    f.write(f"important: {low}-{high} ({score_mapping['important']})\n")
+    f.write(f"moderate: {low}-{high} ({score_mapping['moderate']})\n")
+    f.write(f"low: {low_risk_val} ({score_mapping['low']})\n")
 
 print(f"Data saved to {filename}.txt successfully!")
